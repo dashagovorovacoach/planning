@@ -32,13 +32,6 @@ const faq = [
   ],
 ];
 
-// document.querySelectorAll("[data-booking]").forEach((button) =>
-//   button.addEventListener("click", () => {
-//     if (config.bookingUrl) window.open(config.bookingUrl, "_blank");
-//     else alert("Ссылка на запись ещё не добавлена. Укажите bookingUrl в script.js.");
-//   }),
-// );
-
 const faqContainer = document.querySelector("[data-faq]");
 faq.forEach(([question, answer], index) => {
   const item = document.createElement("article");
@@ -61,7 +54,10 @@ const setMenuState = (open) => {
     if (!menuToggle || !mobileMenu) return;
     menuToggle.setAttribute("aria-expanded", String(open));
     menuToggle.classList.toggle("menu-toggle--expanded", open)
+
     mobileMenu.classList.toggle("mobile-menu--expanded", open)
+    mobileMenu.setAttribute("aria-hidden", String(!open));
+    mobileMenu.toggleAttribute("inert", !open);
 };
 
 

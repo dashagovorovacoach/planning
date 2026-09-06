@@ -38,7 +38,7 @@
           <span></span>
           <span></span>
         </button>
-        <nav class="mobile-menu" aria-label="Мобильная навигация">
+        <nav class="mobile-menu" aria-label="Мобильная навигация" aria-hidden="true" inert>
           <a href="#why-me">Обо мне</a>
           <a href="#how-it-works">Про встречу</a>
           <a href="#reviews">Отзывы</a>
@@ -47,21 +47,17 @@
       </div>
     </header>
 
-    <!-- <div class="menu-overlay" hidden>
-      <nav class="mobile-menu" aria-label="Мобильная навигация">
-        <button class="menu-close" aria-label="Закрыть меню">×</button><a href="#why-me">Обо мне</a>
-        <a href="#how-it-works">Про встречу</a><a href="#reviews">Отзывы</a><a href="#price">Стоимость</a>
-        <button class="button" data-booking>Записаться</button>
-      </nav>
-    </div> -->
     <main id="top">
-      <section class="hero">
+      <section class="hero section">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <h1>Не понимаешь,<br />куда двигаться <em>дальше?</em></h1>
-            <p class="lead">Персональная сессия планирования с коучем.</p>
+            <h1>Не понимаешь,<br />куда <em class="accent">двигаться дальше?</em></h1>
+            <div class="hero-visual-mobile">
+              <img src="assets/hero.png" alt="Дарья Говорова, коуч" />
+              <div class="hero-note"><b>Даша Говорова</b><span>коуч, психолог, менеджер</span></div>
+            </div>
             <div class="hero-detail">
-              <p>Через 2 часа уходишь с готовым документом:</p>
+              <p>Персональная сессия планирования с коучем.<br />Через 2 часа уходишь с готовым документом:</p>
               <ul>
                 <li>твоя точка «Б» на 10 лет</li>
                 <li>цели на год</li>
@@ -69,9 +65,9 @@
               </ul>
             </div>
             <button class="button" data-booking>Записаться на сессию</button>
+            <p class="hero-people-choice">выбор людей, ответственных за свое счастье</p>
           </div>
           <div class="hero-visual">
-            <div class="dots"></div>
             <img src="assets/hero.png" alt="Дарья Говорова, коуч" />
             <div class="hero-note"><b>Даша Говорова</b><span>коуч, психолог, менеджер</span></div>
           </div>
@@ -79,8 +75,8 @@
       </section>
       <section class="fit section">
         <div class="container fit-layout">
-          <article class="fit-group">
-            <h2>Тебе <em>подойдёт</em>,<br />если</h2>
+          <article class="fit-group two-columns">
+            <h2>Тебе <em class="accent">подойдёт</em>, если</h2>
             <ul>
               <li>не понимаешь, чего именно хочешь</li>
               <li>постоянно меняешь планы и сомневаешься</li>
@@ -91,8 +87,8 @@
               <li>хочется перемен, но страшно выбрать не тот путь</li>
             </ul>
           </article>
-          <article class="fit-group not-fit">
-            <h2>Тебе НЕ <em>подойдёт</em>,<br />если</h2>
+          <article class="fit-group not-fit two-columns">
+            <h2>Тебе <em class="accent">НЕ подойдёт</em>, если</h2>
             <ul>
               <li>ты ищешь волшебную таблетку без своих решений</li>
               <li>предпочитаешь закрывать глаза, а не менять обстоятельства</li>
@@ -101,7 +97,7 @@
           </article>
         </div>
       </section>
-      <section class="video-section">
+      <section class="video-section section">
         <div class="container">
           <div class="video-frame" data-vk-video>
             <div class="video-placeholder">
