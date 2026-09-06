@@ -14,6 +14,8 @@
 
   --bg-secondary: #faf8f5;
   --bg-primary: #f5f5f5;
+  --bg-accent: #f4f0ec;
+  --text-color-accent: #7488aa;
   --text-color-nav: #7d838f;
   --text-color-brand: #8d8f95;
   --text-color-booking: #6c7f9f;
@@ -588,7 +590,7 @@ img {
 
 /* #endregion */
 
-.outcomes-grid {
+.outcomes-list {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -602,7 +604,7 @@ img {
   text-align: center;
 }
 
-.outcomes-grid article {
+.outcomes-list article {
   display: flex;
   flex: 0 1 calc((100% - 32px) / 3);
   flex-direction: column;
@@ -615,21 +617,21 @@ img {
   padding: 20px 24px;
 }
 
-.outcomes-grid h3 {
+.outcomes-list h3 {
   font-size: var(--text-xl);
   margin-bottom: 8px;
 }
 
-.outcomes-grid p {
+.outcomes-list p {
   font-size: var(--text-lg);
 }
 
 @media (max-width: 900px) {
-  .outcomes-grid {
+  .outcomes-list {
     margin-top: 24px;
   }
 
-  .outcomes-grid article {
+  .outcomes-list article {
     flex-basis: calc((100% - 16px) / 2);
     max-width: calc((100% - 16px) / 2);
   }
@@ -638,17 +640,17 @@ img {
     font-size: var(--text-3xl);
   }
 
-  .outcomes-grid h3 {
+  .outcomes-list h3 {
     font-size: var(--text-lg);
   }
 
-  .outcomes-grid p {
+  .outcomes-list p {
     font-size: var(--text-base);
   }
 }
 
 @media (max-width: 520px) {
-  .outcomes-grid article {
+  .outcomes-list article {
     flex-basis: 100%;
     max-width: 100%;
   }
@@ -656,41 +658,124 @@ img {
 
 /* #endregion */
 
+/* #region */
+
 .steps span {
-  font-family: Unbounded;
-  color: #8096ba;
-  font-size: 13px;
+  font-family: Rubik;
+  color: #7488aa;
+  font-size: var(--text-2xl);
+  font-weight: 500;
+  -webkit-text-stroke: 1px #7488aa;
+  color: white;
 }
 
 .steps h3 {
-  font-size: 20px;
-  margin: auto 0 8px;
+  font-size: var(--text-2xl);
+  margin: 0 0 10px;
+  color: #7488aa;
 }
 
 .steps p {
-  font-size: 14px;
-  line-height: 1.45;
-  margin: 0;
-  color: #586170;
+  font-size: var(--text-base);
+  line-height: 1.3;
+  color: var(--ink);
 }
 
 .how {
-  background: white;
+  background: var(--bg-accent);
 }
+
 .steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--line);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 30px;
+  padding-left: 82px;
 }
+
+.steps::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 55px;
+  width: 2px;
+  background: #8096ba;
+}
+
 .steps article {
-  padding: 28px 22px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  min-height: 190px;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 0;
 }
-.steps article:nth-child(3n) {
-  border-right: 0;
+
+.steps article::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: -30px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #8096ba;
 }
+
+@media (max-width: 900px) {
+  .steps {
+    padding-left: 62px;
+  }
+
+  .steps::before {
+    left: 35px;
+  }
+
+  .steps article::before {
+    left: -30px;
+  }
+
+  .steps h3 {
+    font-size: var(--text-xl);
+  }
+
+  .steps span {
+    font-size: var(--text-xl);
+  }
+}
+
+@media (max-width: 520px) {
+  .steps {
+    gap: 24px;
+    padding-left: 38px;
+  }
+
+  .steps::before {
+    left: 15px;
+  }
+
+  .steps article {
+    gap: 14px;
+  }
+
+  .steps article::before {
+    left: -26px;
+  }
+
+  .steps span {
+    font-size: var(--text-lg);
+  }
+
+  .steps h3 {
+    font-size: var(--text-lg);
+  }
+
+  .steps p {
+    font-size: var(--text-sm);
+  }
+}
+
 .reviews {
   background: var(--sand);
 }
@@ -922,15 +1007,6 @@ footer {
   .why-grid {
     grid-template-columns: 1fr;
   }
-  .steps {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .steps article:nth-child(3n) {
-    border-right: 1px solid var(--line);
-  }
-  .steps article:nth-child(2n) {
-    border-right: 0;
-  }
   .reviews-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -974,14 +1050,6 @@ footer {
   }
   .menu-overlay {
     inset: 62px 0 0;
-  }
-  .steps {
-    grid-template-columns: 1fr;
-  }
-  .steps article,
-  .steps article:nth-child(3n) {
-    border-right: 0;
-    min-height: 0;
   }
   .reviews-grid {
     grid-template-columns: 1fr;
