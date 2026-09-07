@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;500;600;700&display=swap");
-
 /* #region Base styles and variables */
 
 :root {
@@ -13,7 +11,7 @@
   --blue-lite: #d9e5f3;
 
   --bg-secondary: #faf8f5;
-  --bg-primary: #f5f5f5;
+  --bg-primary: #ffffff;
   --bg-accent: #f4f0ec;
   --text-color-accent: #7488aa;
   --text-color-nav: #7d838f;
@@ -112,17 +110,14 @@ img {
   background: #667fae;
 }
 
-.section-kicker {
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  font-weight: 800;
-  color: #7385a4;
-  margin: 0 0 24px;
-}
-
 .accent {
   font-style: normal;
   background: linear-gradient(transparent 61%, var(--accent) 61%);
+}
+
+h1,
+h2 {
+  font-family: Unbounded, Arial, sans-serif;
 }
 
 @media (max-width: 900px) {
@@ -334,7 +329,6 @@ img {
 }
 
 .hero h1 {
-  font-family: Unbounded, Arial, sans-serif;
   letter-spacing: -0.055em;
   font-size: var(--text-5xl);
   line-height: 1.07;
@@ -590,6 +584,7 @@ img {
 
 /* #endregion */
 
+/* #region Outcomes section */
 .outcomes-list {
   display: flex;
   justify-content: center;
@@ -658,7 +653,7 @@ img {
 
 /* #endregion */
 
-/* #region */
+/* #region How it works  */
 
 .steps span {
   font-family: Rubik;
@@ -685,13 +680,17 @@ img {
   background: var(--bg-accent);
 }
 
+.how h2 {
+  font-size: var(--text-4xl);
+}
+
 .steps {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-top: 30px;
-  padding-left: 82px;
+  margin-top: 24px;
+  padding: 24px 0 0 82px;
 }
 
 .steps::before {
@@ -724,6 +723,10 @@ img {
 }
 
 @media (max-width: 900px) {
+  .how h2 {
+    font-size: var(--text-3xl);
+  }
+
   .steps {
     padding-left: 62px;
   }
@@ -749,6 +752,7 @@ img {
   .steps {
     gap: 24px;
     padding-left: 38px;
+    margin-top: 18px;
   }
 
   .steps::before {
@@ -776,42 +780,102 @@ img {
   }
 }
 
-.reviews {
-  background: var(--sand);
+/* #endregion */
+
+/* #region Review section */
+
+.reviews h2 {
+  font-size: var(--text-4xl);
+  text-align: center;
 }
+
 .reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  column-count: 2;
+  gap: 32px;
+  margin-top: 24px;
 }
+
 .reviews-grid article {
-  background: #fffdf9;
+  break-inside: avoid;
+  margin-bottom: 16px;
+  width: 100%;
+  background: var(--bg-secondary);
   border-radius: 18px;
-  padding: 24px;
+  padding: 40px 24px 32px;
   min-height: 220px;
 }
+
+.reviews-grid article:last-child {
+  margin-bottom: 0;
+}
+
 .reviews-grid img {
   border-radius: 50%;
   width: 54px;
   height: 54px;
   object-fit: cover;
 }
+
 .reviews-grid blockquote {
-  margin: 18px 0;
-  font-size: 14px;
+  margin: 0 0 18px;
+  font-size: var(--text-base);
   line-height: 1.5;
+  font-style: italic;
 }
-.reviews-grid p {
-  margin: 0;
-  font-weight: 800;
-  color: #627897;
+
+.reviews-grid .avatar {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  gap: 12px;
 }
+
+@media (max-width: 900px) {
+  .reviews h2 {
+    font-size: var(--text-3xl);
+  }
+
+  .reviews-grid {
+    column-count: 1;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 520px) {
+  .reviews-grid blockquote,
+  .reviews-grid .avatar p {
+    font-size: var(--text-sm);
+  }
+
+  .reviews-grid article {
+    padding: 32px 16px 24px;
+  }
+
+  .reviews-grid {
+    margin-top: 18px;
+  }
+}
+
+/* #endregion */
+
+/* #region Why me section */
+
+.why {
+  background-color: var(--bg-accent);
+}
+
 .why-grid {
   display: grid;
-  grid-template-columns: 0.94fr 1.06fr;
-  gap: 70px;
+  grid-template-columns: 1fr 2fr;
+  gap: 48px;
   align-items: center;
 }
+
+.why-grid h2 {
+  font-size: var(--text-4xl);
+}
+
 .why-photo {
   position: relative;
   min-height: 600px;
@@ -819,21 +883,91 @@ img {
   border-radius: 28px;
   background: #d8dfeb;
 }
+
 .why-photo > img:first-child {
   object-fit: cover;
   object-position: center;
 }
+
 .why-mobile {
   display: none;
 }
+
 .why-list {
   display: grid;
-  gap: 16px;
+  gap: 20px;
+  margin-top: 32px;
+  padding-left: 24px;
+
+  font-size: var(--text-lg);
 }
+
+.why-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+}
+
 .why-list p {
-  margin: 0;
-  line-height: 1.45;
+  font-size: var(--text-base);
 }
+
+@media (max-width: 900px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-grid h2 {
+    font-size: var(--text-3xl);
+  }
+
+  .why-list {
+    margin-top: 18px;
+    gap: 14px;
+  }
+
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-grid {
+    gap: 36px;
+  }
+
+  .why-photo {
+    min-height: 430px;
+  }
+
+  .why-mobile {
+    display: block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .why-photo {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .why-mobile {
+    width: 64px;
+    height: 64px;
+  }
+
+  .why-list {
+    font-size: var(--text-base);
+  }
+  .why-list p {
+    font-size: var(--text-sm);
+  }
+}
+
+/* #endregion */
+
 .price {
   background: #dce7f6;
   text-align: center;
@@ -1004,18 +1138,6 @@ footer {
     display: block;
   }
 
-  .why-grid {
-    grid-template-columns: 1fr;
-  }
-  .reviews-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .why-grid {
-    gap: 36px;
-  }
-  .why-photo {
-    min-height: 430px;
-  }
   .price-card {
     grid-template-columns: 1fr;
   }
@@ -1057,22 +1179,7 @@ footer {
   .reviews-grid article {
     min-height: 0;
   }
-  .why-photo {
-    min-height: 355px;
-  }
-  .why-mobile {
-    display: block;
-    position: absolute !important;
-    right: 16px;
-    bottom: 14px;
-    width: 120px !important;
-    height: 120px !important;
-    border-radius: 50%;
-    z-index: 1;
-  }
-  .why-photo > img:first-child {
-    display: none;
-  }
+
   .price-card {
     padding: 26px 22px;
   }
