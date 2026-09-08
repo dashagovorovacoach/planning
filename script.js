@@ -8,27 +8,27 @@ const config = {
 const faq = [
   [
     "А если я уже много раз составляла планы и не выполняла их?",
-    "Здесь не будет жёстких обещаний и универсальных списков. На встрече мы ищем честную точку опоры, реальные условия и шаги, которые можно сделать именно в твоём ритме.",
+    "Мы не пишем очередной список чужих целей.<br/><br/>Сначала разбираемся, что сейчас происходит в твоей жизни, куда ты хочешь прийти, зачем тебе это, что сейчас мешает и что действительно имеет значение. И только после этого переводим это в конкретные действия.<br/><br/>Поэтому результат консультации — не просто список «хотелок», а связка:<br/>видение → цели → приоритет → конкретные шаги",
   ],
   [
     "Имеет ли смысл планировать в условиях полной неопределенности?",
-    "Да. План — не договор с будущим, а ориентир. Он помогает увидеть, что для тебя важно сейчас, выбрать направление и сохранить возможность менять маршрут.",
+    "Тогда планирование может быть особенно полезным.<br/>Тебе не обязательно знать, что будет через 10 лет. Мы не пытаемся предсказать будущее.<br/><br/>Мы создаем образ того, как бы тебе хотелось жить, если можно выбирать. А дальше смотрим, что из этого зависит от тебя уже сейчас и какой следующий шаг имеет смысл сделать. Это возвращает чувство контроля.<br/><br/>План дает направление, общее понимание вектора, помогает расставить приоритеты.",
   ],
   [
-    "Можно ли прийти, если я сейчас на перепутье?",
-    "Да, это один из лучших моментов для такой встречи. Мы распутаем варианты и сформулируем ближайшее бережное решение.",
+    "А не убивает ли планирование спонтанность и все хорошее, что может случиться само?",
+    "Я тоже не хочу планировать каждый свой шаг.<br/><br/>Мы планируем направление, а не каждую минуту твоей жизни. Поэтому в плане всегда остается место для случайностей, новых возможностей, путешествий, людей и решений, которые невозможно было предугадать.<br/><br/>Когда понятно, куда ты хочешь двигаться, у тебя остается гораздо больше свободы выбирать, как именно туда идти. И часто мы приходим к цели неожиданным для нас образом.",
   ],
   [
     "А если планирование загоняет меня в рамки?",
-    "Планирование может быть гибким. Ты получишь живой документ, к которому можно возвращаться, пересматривать и адаптировать его под жизнь.",
+    "Твой план — не контракт с собой на ближайшие 10 лет.<br/><br/>Жизнь меняется, и план тоже может меняться. Его задача не в том, чтобы расписать каждый твой шаг и лишить тебя спонтанности. Наоборот, когда ты понимаешь направление, тебе проще выбирать: куда идти, а где можно спокойно свернуть с маршрута.<br/><br/>План дает опору, а не клетку. Гибкость - неотъемлемая часть планирования.",
   ],
   [
     "А если я вообще не понимаю, чего хочу?",
-    "Не нужно приходить с готовым ответом. Методика начинается с диагностики: она помогает заметить важное и постепенно собрать направление.",
+    "Это не проблема — это цель встречи.<br/><br/>Тебе не нужно приходить с готовой целью или списком желаний. Наоборот, одна из задач консультации — разобраться, чего ты действительно хочешь, что для тебя важно и каким ты видишь свое будущее.<br/><br/>Мы не будем придумывать цели ради целей. Сначала ищем твое настоящее «хочу», а уже потом переводим его в план.",
   ],
   [
     "А если я не выполню свой план?",
-    "План — не оценка твоей успешности. Если что-то не случилось, это повод скорректировать шаги, а не обвинять себя.",
+    "Планирование — не экзамен на дисциплину и успешность.<br/><br/>Если через несколько месяцев что-то изменилось, цель перестала быть важной или план оказался нереалистичным — это не провал. Это информация. Невыполненные задачи часто говорят нам что-то важное о наших целях.  И План поможет это заметить.<br/><br/>Мне важно, чтобы твой план помогал тебе жить свою жизнь, а не заставлял соответствовать собственному списку задач.",
   ],
 ];
 
@@ -51,29 +51,28 @@ const mobileMenu = document.querySelector(".mobile-menu");
 const mobileMenuLinks = document.querySelectorAll(".mobile-menu a");
 
 const setMenuState = (open) => {
-    if (!menuToggle || !mobileMenu) return;
-    menuToggle.setAttribute("aria-expanded", String(open));
-    menuToggle.classList.toggle("menu-toggle--expanded", open)
+  if (!menuToggle || !mobileMenu) return;
+  menuToggle.setAttribute("aria-expanded", String(open));
+  menuToggle.classList.toggle("menu-toggle--expanded", open);
 
-    mobileMenu.classList.toggle("mobile-menu--expanded", open)
-    mobileMenu.setAttribute("aria-hidden", String(!open));
-    mobileMenu.toggleAttribute("inert", !open);
+  mobileMenu.classList.toggle("mobile-menu--expanded", open);
+  mobileMenu.setAttribute("aria-hidden", String(!open));
+  mobileMenu.toggleAttribute("inert", !open);
 };
 
-
 menuToggle?.addEventListener("click", () => {
-    const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
-    setMenuState(!isExpanded);
+  const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+  setMenuState(!isExpanded);
 });
 
 mobileMenuLinks.forEach((link) => {
-    link.addEventListener("click", () => setMenuState(false));
+  link.addEventListener("click", () => setMenuState(false));
 });
 
 document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-        setMenuState(false);
-    }
+  if (event.key === "Escape") {
+    setMenuState(false);
+  }
 });
 
 // const menuButton = document.querySelector(".menu-button");
@@ -106,7 +105,7 @@ if (config.vkVideoIframeUrl)
 const socialLabels = { telegram: "Telegram", instagram: "Instagram", vk: "ВКонтакте" };
 document.querySelector("[data-footer-socials]").innerHTML = Object.entries(socialLabels)
   .map(([name, label]) => {
-    const image = `<img src="assets/${name}.png" alt="${label}">`;
+    const image = `<img src="assets/${name}.svg" alt="${label}">`;
     return config.socials[name]
       ? `<a href="${config.socials[name]}" target="_blank" rel="noreferrer">${image}</a>`
       : image;
@@ -115,12 +114,12 @@ document.querySelector("[data-footer-socials]").innerHTML = Object.entries(socia
 
 document.querySelector("[data-legal]").innerHTML = config.documents.offer
   ? `<a href="${config.documents.offer}" target="_blank" rel="noreferrer">Публичная оферта</a>`
-  : "<span>Публичная оферта</span>";
+  : "<p>Публичная оферта</p>";
 document
   .querySelector("[data-legal]")
   .insertAdjacentHTML(
     "beforeend",
     config.documents.privacy
       ? `<a href="${config.documents.privacy}" target="_blank" rel="noreferrer">Политика обработки персональных данных</a>`
-      : "<span>Политика обработки персональных данных</span>",
+      : "<p>Политика обработки персональных данных</p>",
   );
