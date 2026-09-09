@@ -1,7 +1,12 @@
 const config = {
   bookingUrl: "https://calendar.app.google/D9NGnU5cNgPJ2Lm37",
   vkVideoIframeUrl: "https://vkvideo.ru/video\_ext.php?oid=-241161782&id=456239017&hash=c3bb0d59ad31803d&hd=3",
-  socials: { telegram: null, whatsapp: null, vk: null, instagram: null },
+  socials: {
+    telegram: "https://t.me/dashagovorova",
+    whatsapp: "https://wa.me/+79290878821",
+    vk: "https://vk.com/id94197597",
+    instagram: "https://www.instagram.com/dashagovorova/",
+  },
   documents: { offer: null, privacy: null },
 };
 
@@ -46,6 +51,15 @@ faq.forEach(([question, answer], index) => {
   faqContainer.append(item);
 });
 
+if (config.bookingUrl) {
+  const bookingButtons = document.querySelectorAll("[data-booking]");
+  bookingButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      window.open(config.bookingUrl, "_blank");
+    });
+  });
+}
+
 const menuToggle = document.querySelector(".menu-toggle");
 const mobileMenu = document.querySelector(".mobile-menu");
 const mobileMenuLinks = document.querySelectorAll(".mobile-menu a");
@@ -75,35 +89,21 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// const menuButton = document.querySelector(".menu-button");
-// const overlay = document.querySelector(".menu-overlay");
-
-// const setMenu = (open) => {
-//   overlay.hidden = !open;
-//   menuButton.setAttribute("aria-expanded", String(open));
-//   document.body.classList.toggle("menu-open", open);
-// };
-
-// menuButton.addEventListener("click", () => setMenu(overlay.hidden));
-
-// document.querySelector(".menu-close").addEventListener("click", () => setMenu(false));
-
-// overlay.addEventListener("click", (event) => {
-//   if (event.target === overlay) setMenu(false);
-// });
-
-// overlay.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenu(false)));
-
-// document.addEventListener("keydown", (event) => {
-//   if (event.key === "Escape") setMenuState(false);
-// });
-
 if (config.vkVideoIframeUrl)
   document.querySelector("[data-vk-video]").innerHTML =
     `<iframe src="${config.vkVideoIframeUrl}" title="Видео о консультации по планированию" allowfullscreen></iframe>`;
 
-const socialLabels = { telegram: "Telegram", instagram: "Instagram", vk: "ВКонтакте" };
-document.querySelector("[data-footer-socials]").innerHTML = Object.entries(socialLabels)
+const askSocialLabels = { telegram: "Telegram", whatsapp: "WhatsApp", vk: "ВКонтакте" };
+document.querySelector("[data-socials]").innerHTML = Object.entries(askSocialLabels)
+  .map(([name, lable]) =>
+    config.socials[name]
+      ? `<a href="${config.socials[name]}" target="_blank" rel="noreferrer">${lable}</a>`
+      : `<a>${lable}</a>`,
+  )
+  .join("");
+
+const footerSocialLabels = { telegram: "Telegram", instagram: "Instagram", vk: "ВКонтакте" };
+document.querySelector("[data-footer-socials]").innerHTML = Object.entries(footerSocialLabels)
   .map(([name, label]) => {
     const image = `<img src="assets/${name}.svg" alt="${label}">`;
     return config.socials[name]
@@ -115,6 +115,7 @@ document.querySelector("[data-footer-socials]").innerHTML = Object.entries(socia
 document.querySelector("[data-legal]").innerHTML = config.documents.offer
   ? `<a href="${config.documents.offer}" target="_blank" rel="noreferrer">Публичная оферта</a>`
   : "<p>Публичная оферта</p>";
+
 document
   .querySelector("[data-legal]")
   .insertAdjacentHTML(
