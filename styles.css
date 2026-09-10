@@ -431,8 +431,7 @@ h2 {
   z-index: 2;
   left: 2%;
   bottom: 42px;
-  width: 220px;
-  padding: 10px;
+  padding: 10px 16px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 12px 35px #65749622;
@@ -1144,6 +1143,7 @@ h2 {
 .faq-item button {
   border: 0;
   background: var(--white);
+  color: var(--ink);
   width: 100%;
   display: flex;
   justify-content: space-between;
