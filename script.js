@@ -7,7 +7,7 @@ const config = {
     vk: "https://vk.com/id94197597",
     instagram: "https://www.instagram.com/dashagovorova/",
   },
-  documents: { offer: null, privacy: null },
+  documents: { offer: "docs/offer.pdf", privacy: "docs/privacy-policy.pdf" },
 };
 
 const faq = [
@@ -113,7 +113,7 @@ document.querySelector("[data-footer-socials]").innerHTML = Object.entries(foote
   .join("");
 
 document.querySelector("[data-legal]").innerHTML = config.documents.offer
-  ? `<a href="${config.documents.offer}" target="_blank" rel="noreferrer">Публичная оферта</a>`
+  ? `<p><a href="${config.documents.offer}" target="_blank" rel="noreferrer">Публичная оферта</a></p>`
   : "<p>Публичная оферта</p>";
 
 document
@@ -121,6 +121,6 @@ document
   .insertAdjacentHTML(
     "beforeend",
     config.documents.privacy
-      ? `<a href="${config.documents.privacy}" target="_blank" rel="noreferrer">Политика обработки персональных данных</a>`
+      ? `<p><a href="${config.documents.privacy}" target="_blank" rel="noreferrer">Политика обработки персональных данных</a></p>`
       : "<p>Политика обработки персональных данных</p>",
   );
