@@ -1,5 +1,5 @@
 const config = {
-  bookingUrl: "https://calendar.app.google/D9NGnU5cNgPJ2Lm37",
+  bookingUrl: "https://scheduler.zoom.us/daria-govorova/plan",
   vkVideoIframeUrl: "https://vkvideo.ru/video\_ext.php?oid=-241161782&id=456239017&hash=c3bb0d59ad31803d&hd=3",
   socials: {
     telegram: "https://t.me/dashagovorova",
