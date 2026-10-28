@@ -89,9 +89,18 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-if (config.vkVideoIframeUrl)
-  document.querySelector("[data-vk-video]").innerHTML =
-    `<iframe src="${config.vkVideoIframeUrl}" title="Видео о консультации по планированию" allowfullscreen></iframe>`;
+if (config.vkVideoIframeUrl) {
+  const videoSection = document.querySelector("[data-vk-video]");
+  videoSection?.querySelector(".video-play-button")?.addEventListener("click", () => {
+    const frame = document.createElement("iframe");
+    frame.src = `${config.vkVideoIframeUrl}&autoplay=1` ?? "";
+    frame.title = "Видео о консультации по планированию";
+    frame.allow = "autoplay; encrypted-media; fullscreen; picture-in-picture";
+    frame.allowFullscreen = true;
+    videoSection.replaceChildren(frame);
+    videoSection.classList.add("video-frame--playing");
+  });
+}
 
 const askSocialLabels = { telegram: "Telegram", whatsapp: "WhatsApp", vk: "ВКонтакте" };
 document.querySelector("[data-socials]").innerHTML = Object.entries(askSocialLabels)
